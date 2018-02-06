@@ -1,34 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+<h1 class="center">Bookkeeper</h1>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @item.amount %>
-</p>
+<table class="item-table">
+  <thead>
+    <tr>
+      <th>Transaction date</th>
+      <th>Description</th>
+      <th>Income</th>
+      <th>Expense</th>
+      <th>Category</th>
+      <th>Subcategory</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Debit:</strong>
-  <%= @item.debit %>
-</p>
+  <tbody>
+    <tr>
+      <td><%= @item.transaction_date %></td>
+      <td><%= @item.description %></td>
+      <td>
+        <% if @item.debit %>
+          <%= number_to_currency(@item.amount) %>
+        <% end %>
+      </td>
+      <td>
+        <% if !@item.debit %>
+          -<%= number_to_currency(@item.amount) %>
+        <% end %>
+      </td>
+      <td><%= @item.category %></td>
+      <td><%= @item.subcategory %></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Category:</strong>
-  <%= @item.category %>
-</p>
-
-<p>
-  <strong>Subcategory:</strong>
-  <%= @item.subcategory %>
-</p>
-
-<p>
-  <strong>Transaction date:</strong>
-  <%= @item.transaction_date %>
-</p>
-
+<br>
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
