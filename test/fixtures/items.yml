@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  amound: 9.99
+  debit: false
+  category: MyString
+  subcategory: MyString
+  transaction_date: 2018-02-06
+
+two:
+  name: MyString
+  amound: 9.99
+  debit: false
+  category: MyString
+  subcategory: MyString
+  transaction_date: 2018-02-06
