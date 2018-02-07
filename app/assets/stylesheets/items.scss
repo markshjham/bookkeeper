@@ -2,6 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.transaction-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    
+    > * {
+        border: 1px solid #ddd;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+    }
+    
+    .label {
+        border: 1px solid #ddd;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+    }
+}
+
 .item-table {
     border-collapse: collapse;
     width: 100%;
@@ -22,11 +43,7 @@
     }
     
     th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #4CAF50;
-        color: white;
+
     }
 }
 

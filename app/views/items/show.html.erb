@@ -2,38 +2,32 @@
 
 <h1 class="center">Bookkeeper</h1>
 
-<table class="item-table">
-  <thead>
-    <tr>
-      <th>Transaction date</th>
-      <th>Description</th>
-      <th>Income</th>
-      <th>Expense</th>
-      <th>Category</th>
-      <th>Subcategory</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><%= @item.transaction_date %></td>
-      <td><%= @item.description %></td>
-      <td>
-        <% if @item.debit %>
-          <%= number_to_currency(@item.amount) %>
-        <% end %>
-      </td>
-      <td>
-        <% if !@item.debit %>
-          -<%= number_to_currency(@item.amount) %>
-        <% end %>
-      </td>
-      <td><%= @item.category %></td>
-      <td><%= @item.subcategory %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="transaction-grid">
+  <div class="label">Transaction date</div>
+  <div class="label">Description</div>
+  <div class="label">Income</div>
+  <div class="label">Expense</div>
+  <div class="label">Category</div>
+  <div class="label">Subcategory</div>
+  <div class="label"></div>
+  <div><%= @item.transaction_date %></div>
+  <div><%= @item.description %></div>
+  <div>
+    <% if @item.debit %>
+      <%= number_to_currency(@item.amount) %>
+    <% end %>
+  </div>
+  <div>
+    <% if !@item.debit %>
+      -<%= number_to_currency(@item.amount) %>
+    <% end %>
+  </div>
+  <div><%= @item.category %></div>
+  <div><%= @item.subcategory %></div>
+  <div><%= link_to 'Show', @item %></div>
+</div>
 
 <br>
 <%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', items_path %>

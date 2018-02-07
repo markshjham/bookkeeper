@@ -11,31 +11,20 @@
     </div>
   <% end %>
 
-  <table class="item-table">
-    <thead>
-      <tr>
-        <th>Transaction date</th>
-        <th>Description</th>
-        <th>Debit</th>
-        <th>Amount</th>
-        <th>Category</th>
-        <th>Subcategory</th>
-        <th></th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <tr>
-        <td><%= form.date_select :transaction_date, id: :item_transaction_date %></td>
-        <td><%= form.text_field :description, id: :item_description %></td>
-        <td><%= form.check_box :debit, id: :item_debit %></td>
-        <td><%= form.text_field :amount, id: :item_amount %></td>
-        <td><%= form.text_field :category, id: :item_category %></td>
-        <% #awesomeplete or datalist-polyfill %>
-        <td><%= form.text_field :subcategory, id: :item_subcategory %></td>
-        <td><div class="actions"><%= form.submit %></div></td>
-      </tr>
-    </tbody>
-  </table>
-
+  <div class="transaction-grid">
+    <div class="label">Transaction date</div>
+    <div class="label">Description</div>
+    <div class="label">Debit</div>
+    <div class="label">Amount</div>
+    <div class="label">Category</div>
+    <div class="label">Subcategory</div>
+    <div class="label"></div>
+    <div><%= form.date_select :transaction_date, id: :item_transaction_date %></div>
+    <div><%= form.text_field :description, id: :item_description %></div>
+    <div><%= form.check_box :debit, id: :item_debit %></div>
+    <div><%= form.text_field :amount, id: :item_amount %></div>
+    <div><%= form.text_field :category, id: :item_category %></div>
+    <div><%= form.text_field :subcategory, id: :item_subcategory %></div>
+    <div><div class="actions"><%= form.submit %></div></div>
+  </div>
 <% end %>

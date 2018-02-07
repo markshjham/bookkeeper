@@ -2,54 +2,32 @@
 
 <h1 class="center">Bookkeeper</h1>
 
-<table class="item-table">
-  <thead>
-    <tr>
-      <th>Transaction date</th>
-      <th>Description</th>
-      <th>Income</th>
-      <th>Expense</th>
-      <th>Category</th>
-      <th>Subcategory</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.transaction_date %></td>
-        <td><%= item.description %></td>
-        <td>
-          <% if item.debit %>
-            <%= number_to_currency(item.amount) %>
-          <% end %>
-        </td>
-        <td>
-          <% if !item.debit %>
-            -<%= number_to_currency(item.amount) %>
-          <% end %>
-        </td>
-        <td><%= item.category %></td>
-        <td><%= item.subcategory %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    <tr><td colspan="11"></td></tr>
-    <tr>
-      <td>Total Income</td>
-      <td>Total Expense</td>
-      <td>Net</td>
-    </tr>
-    <tr>
-      <td><%= number_to_currency @debitTotal %></td>
-      <td>-<%= number_to_currency @creditTotal %></td>
-      <td><%= number_to_currency (@debitTotal - @creditTotal) %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="transaction-grid">
+  <div class="label">Transaction date</div>
+  <div class="label">Description</div>
+  <div class="label">Income</div>
+  <div class="label">Expense</div>
+  <div class="label">Category</div>
+  <div class="label">Subcategory</div>
+  <div class="label"></div>
+  <% @items.each do |item| %>
+    <div><%= item.transaction_date %></div>
+    <div><%= item.description %></div>
+    <div>
+      <% if item.debit %>
+        <%= number_to_currency(item.amount) %>
+      <% end %>
+    </div>
+    <div>
+      <% if !item.debit %>
+        -<%= number_to_currency(item.amount) %>
+      <% end %>
+    </div>
+    <div><%= item.category %></div>
+    <div><%= item.subcategory %></div>
+    <%= link_to 'Edit', edit_item_path(item) %>
+  <% end %>
+</div>
 
 <br>
 
