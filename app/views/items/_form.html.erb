@@ -24,7 +24,7 @@
     <div><%= form.check_box :debit, id: :item_debit %></div>
     <div><%= form.text_field :amount, id: :item_amount %></div>
     <div>
-      <input class="awesomplete" list="category-list" />
+      <%= form.text_field :category, id: :item_category, list: "category-list", class: "awesomplete" %>
       <datalist id="category-list">
         <% @categories.each do |category| %>
           <option><%= category.category %></option>
@@ -32,7 +32,7 @@
       </datalist>
     </div>
     <div>
-      <input class="awesomplete" list="subcategory-list" />
+      <%= form.text_field :subcategory, id: :item_subcategory, list: "subcategory-list", class: "awesomplete" %>
       <datalist id="subcategory-list">
         <% @subcategories.each do |subcategory| %>
           <option><%= subcategory.subcategory %></option>
