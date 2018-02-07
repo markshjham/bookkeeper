@@ -27,6 +27,7 @@
     <div><%= item.subcategory %></div>
     <%= link_to 'Edit', edit_item_path(item) %>
   <% end %>
+  <%= link_to 'Add New Transaction', new_item_path, class: "new-item-button" %>
 </div>
 
 <div class="total-grid grid-container">
@@ -40,4 +41,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+

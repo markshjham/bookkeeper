@@ -16,7 +16,7 @@
         border: 1px solid #ddd;
         padding-top: 12px;
         padding-bottom: 12px;
-        background-color: #4CAF50;
+        background-color: #5CBF60;
         color: white;
         text-align: center;
     }
@@ -24,6 +24,10 @@
 
 .transaction-grid {
     grid-template-columns: repeat(7, 1fr);
+    
+    input {
+        width: 100%;
+    }
 }
 
 .total-grid {
@@ -31,28 +35,13 @@
     margin-top: 30px;
 }
 
-.item-table {
-    border-collapse: collapse;
-    width: 100%;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    margin-top: 40px;
+.new-item-button {
+    grid-column: 1 / span 7;
+    background-color: #6CCF70 !important;
+    color: white !important;
     
-    tr, td, th {
-        border: 1px solid #ddd;
-        padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    tr:hover {
-        background-color: #ddd;
-    }
-    
-    th {
-
+    &:hover {
+        background-color: #3C9F40 !important;
     }
 }
-
 
