@@ -2,9 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.transaction-grid {
+.grid-container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
     
     > * {
         border: 1px solid #ddd;
@@ -21,6 +20,15 @@
         color: white;
         text-align: center;
     }
+}
+
+.transaction-grid {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.total-grid {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 30px;
 }
 
 .item-table {

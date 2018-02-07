@@ -2,7 +2,7 @@
 
 <h1 class="center">Bookkeeper</h1>
 
-<div class="transaction-grid">
+<div class="transaction-grid grid-container">
   <div class="label">Transaction date</div>
   <div class="label">Description</div>
   <div class="label">Income</div>
@@ -27,6 +27,15 @@
     <div><%= item.subcategory %></div>
     <%= link_to 'Edit', edit_item_path(item) %>
   <% end %>
+</div>
+
+<div class="total-grid grid-container">
+  <div class="label">Total Income</div>
+  <div class="label">Total Expense</div>
+  <div class="label">Net</div>
+  <div><%= number_to_currency @debitTotal %></div>
+  <div>-<%= number_to_currency @creditTotal %></div>
+  <div><%= number_to_currency (@debitTotal - @creditTotal) %></div>
 </div>
 
 <br>

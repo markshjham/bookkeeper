@@ -17,10 +17,14 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @categories = Item.select(:category).distinct
+    @subcategories = Item.select(:subcategory).distinct
   end
 
   # GET /items/1/edit
   def edit
+    @categories = Item.select(:category).distinct
+    @subcategories = Item.select(:subcategory).distinct
   end
 
   # POST /items
