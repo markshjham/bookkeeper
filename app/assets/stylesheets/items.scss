@@ -24,9 +24,16 @@
 
 .transaction-grid {
     grid-template-columns: repeat(7, 1fr);
+    margin-top: 40px;
     
     input {
         width: 100%;
+    }
+    
+    @for $i from 15 to 22 {
+        & > *:nth-child(14n+#{$i}) {
+            background-color: LightGray;
+        }
     }
 }
 

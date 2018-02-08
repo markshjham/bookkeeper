@@ -16,9 +16,9 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = Item.new
     @categories = Item.select(:category).distinct
     @subcategories = Item.select(:subcategory).distinct
+    @item = Item.new
   end
 
   # GET /items/1/edit
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to items_url, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new }
+        format.html { redirect_to new_item_path }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to items_url, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_item_path }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
