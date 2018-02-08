@@ -14,8 +14,3 @@
 //= require turbolinks
 //= require flatpickr
 //= require_tree .
-
-import flatpickr from "flatpickr";
-
-flatpickr('#flatpickr-input', {});
-

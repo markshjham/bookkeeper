@@ -19,10 +19,11 @@
     <div class="label">Category</div>
     <div class="label">Subcategory</div>
     <div class="label"></div>
-    <div><%=  form.date_select :transaction_date, id: :item_transaction_date %></div>
     <!--
-    <div><input type="text" id="flatpickr-input"></div>
+    <div><%=  form.date_select :transaction_date, id: :item_transaction_date %></div>
     -->
+    <div><%= form.text_field :transaction_date, id: :item_transaction_date, class:"flatpickr flatpickr-input", readonly:"readonly", remote:"true" %></div>
+    
     <div><%= form.text_field :description, id: :item_description %></div>
     <div><%= form.check_box :debit, id: :item_debit %></div>
     <div><%= form.text_field :amount, id: :item_amount %></div>
@@ -49,3 +50,7 @@
     <% end %>
   </div>
 <% end %>
+
+<script>
+  flatpickr('.flatpickr-input');
+</script>
