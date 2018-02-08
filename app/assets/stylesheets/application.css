@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require flatpickr
  */
  
 body {
@@ -33,8 +34,4 @@ a {
 
 a:hover {
     background-color: grey;
-}
-
-[hidden] {
-  display: none;
 }

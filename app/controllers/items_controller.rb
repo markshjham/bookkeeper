@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all.order(transaction_date: :desc)
+    if params[:status] == "search"
+      @items = Item.first
+    else
+      @items = Item.all.order(transaction_date: :desc)
+    end
     @debitTotal = @items.where(debit:true).sum(:amount)
     @creditTotal = @items.where(debit:false).sum(:amount)
   end

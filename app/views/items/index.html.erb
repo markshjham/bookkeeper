@@ -2,6 +2,14 @@
 
 <h1 class="center">Bookkeeper</h1>
 
+<!-- Add search function with date range
+<%= form_tag("/", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+-->
+
 <div class="transaction-grid grid-container">
   <div class="label">Transaction date</div>
   <div class="label">Description</div>
@@ -27,7 +35,7 @@
     <div><%= item.subcategory %></div>
     <%= link_to 'Edit', edit_item_path(item) %>
   <% end %>
-  <%= link_to 'Add New Transaction', new_item_path, class: "new-item-button" %>
+  <%= link_to 'Add New Transaction', new_item_path, class: "row-button" %>
 </div>
 
 <div class="total-grid grid-container">
