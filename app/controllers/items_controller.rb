@@ -4,12 +4,31 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    if params[:last_week]
+    if params[:search_choice] == "last_week"
       params[:start_date] = firstDay
       params[:end_date] = lastDay
       @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
-    elsif params[:start_date]
-      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
+    elsif params[:search_choice] == "view_month"
+      date = Date.today
+      
+      while date.day != 1
+        date = date.prev_day
+      end
+      
+      while date.month != params[:month_list].to_i
+        date = date.prev_month
+      end
+      
+      params[:start_date] = date
+      
+      while date.next_day.month != date.next_month.month
+        date = date.next_day
+      end
+      
+      params[:end_date] = date
+      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date])).order(transaction_date: :desc)
+    elsif params[:date_range]
+      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date])).order(transaction_date: :desc)
     else
       @items = Item.all.order(transaction_date: :desc)
     end
@@ -103,5 +122,4 @@ class ItemsController < ApplicationController
       end
       return today - day - 1
     end
-
 end
