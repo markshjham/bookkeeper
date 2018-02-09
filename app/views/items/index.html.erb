@@ -5,6 +5,7 @@
 <!-- Add search function with date range-->
 <%= form_tag("/", method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
+  <%= select_tag :search_choice, options_for_select([ ["date range", "date_range"], ["last week", "last_week"] ], "date range"), onchange: "myFunction()" %>
   <% if params[:start_date] %>
     <% start_date = params[:start_date] %>
     <% end_date = params[:end_date] %>
@@ -12,14 +13,16 @@
     <% start_date = Date.today %>
     <% end_date = Date.today %>
   <% end %>
-  <%= text_field_tag :start_date, nil, id: :start_date, value: start_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
-  to
-  <%= text_field_tag :end_date, nil, id: :end_date, value: end_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
-  <%= label_tag "last week" %>
-  <%= check_box_tag :last_week, id: :last_week %>
+  <div id="select_range">
+    <%= text_field_tag :start_date, nil, id: :start_date, value: start_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
+    to
+    <%= text_field_tag :end_date, nil, id: :end_date, value: end_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
+  </div>
+  <div id="select_week">
+    <%= check_box_tag :last_week, id: :last_week %>
+  </div>
   <%= submit_tag("Search") %>
 <% end %>
-
 
 <div class="transaction-grid grid-container">
   <div class="label">Transaction date</div>
@@ -64,3 +67,23 @@
 <br>
 
 
+<script type="text/javascript">
+  function myFunction() {
+    
+    var x = document.getElementById("search_choice");
+    var range = document.getElementById("select_range");
+    var week = document.getElementById("select_week");
+    var last = document.getElementById("last_week");
+    
+    if (x.value === "date_range") {
+      range.style.display = "block";
+      last.checked = false;
+      
+    }
+    
+    if (x.value === "last_week") {
+      range.style.display = "none";
+      last.checked = true;
+    }
+};
+</script>
