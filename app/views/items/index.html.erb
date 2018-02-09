@@ -15,6 +15,8 @@
   <%= text_field_tag :start_date, nil, id: :start_date, value: start_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
   to
   <%= text_field_tag :end_date, nil, id: :end_date, value: end_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
+  <%= label_tag "last week" %>
+  <%= check_box_tag :last_week, id: :last_week %>
   <%= submit_tag("Search") %>
 <% end %>
 
@@ -42,7 +44,7 @@
     </div>
     <div><%= item.category %></div>
     <div><%= item.subcategory %></div>
-    <%= link_to 'Edit', edit_item_path(item) %>
+    <%= link_to 'Edit', edit_item_path(item), class: "grid-edit-button" %>
   <% end %>
   <%= link_to 'Add New Transaction', new_item_path, class: "row-button" %>
   <% if params[:start_date] %>

@@ -4,9 +4,12 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    if params[:start_date]
+    if params[:last_week]
+      params[:start_date] = firstDay
+      params[:end_date] = lastDay
       @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
-
+    elsif params[:start_date]
+      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
     else
       @items = Item.all.order(transaction_date: :desc)
     end
@@ -82,4 +85,23 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:description, :amount, :debit, :category, :subcategory, :transaction_date)
     end
+    
+    def firstDay
+      today = Date.today
+      day = today.cwday
+      if day == 7
+        day = 0
+      end
+      return today - day - 7
+    end
+    
+    def lastDay
+      today = Date.today
+      day = today.cwday
+      if day == 7
+        day = 0
+      end
+      return today - day - 1
+    end
+
 end
