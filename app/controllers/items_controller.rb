@@ -4,8 +4,9 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    if params[:status] == "search"
-      @items = Item.first
+    if params[:start_date]
+      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
+
     else
       @items = Item.all.order(transaction_date: :desc)
     end
