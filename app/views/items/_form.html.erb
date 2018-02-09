@@ -22,7 +22,11 @@
     <!--
     <div><%=  form.date_select :transaction_date, id: :item_transaction_date %></div>
     -->
-    <div><%= form.text_field :transaction_date, id: :item_transaction_date, class:"flatpickr flatpickr-input", readonly:"readonly", remote:"true" %></div>
+    <div>
+      <% if !item.transaction_date %>
+        <% item.transaction_date = Date.today %>
+      <% end %>
+      <%= form.text_field :transaction_date, id: :item_transaction_date, value: item.transaction_date, class:"flatpickr flatpickr-input", readonly:"readonly", remote:"true" %></div>
     
     <div><%= form.text_field :description, id: :item_description %></div>
     <div><%= form.check_box :debit, id: :item_debit %></div>
