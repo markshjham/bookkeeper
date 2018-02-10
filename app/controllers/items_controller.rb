@@ -7,7 +7,11 @@ class ItemsController < ApplicationController
     if params[:search_choice] == "last_week"
       params[:start_date] = firstDay
       params[:end_date] = lastDay
-      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
+      if params[:filter_list] != ""
+        @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]), category: params[:filter_list])
+      else
+        @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
+      end
     elsif params[:search_choice] == "view_month"
       date = Date.today
       
@@ -26,14 +30,27 @@ class ItemsController < ApplicationController
       end
       
       params[:end_date] = date
-      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date])).order(transaction_date: :desc)
+      if params[:filter_list] != ""
+        @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]), category: params[:filter_list]).order(transaction_date: :desc)
+      else
+        @items = Item.where(transaction_date: (params[:start_date]..params[:end_date])).order(transaction_date: :desc)
+      end
     elsif params[:date_range]
-      @items = Item.where(transaction_date: (params[:start_date]..params[:end_date])).order(transaction_date: :desc)
+      if params[:filter_list] != ""
+        @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]), category: params[:filter_list]).order(transaction_date: :desc)
+      else
+        @items = Item.where(transaction_date: (params[:start_date]..params[:end_date])).order(transaction_date: :desc)
+      end
     else
-      @items = Item.all.order(transaction_date: :desc)
+      if params[:filter_list] == nil || params[:filter_list] == ""
+        @items = Item.all.order(transaction_date: :desc)
+      else
+        @items = Item.where(category: params[:filter_list]).order(transaction_date: :desc)
+      end
     end
     @debitTotal = @items.where(debit:true).sum(:amount)
     @creditTotal = @items.where(debit:false).sum(:amount)
+    @categories = Item.select(:category).distinct
   end
 
   # GET /items/1
