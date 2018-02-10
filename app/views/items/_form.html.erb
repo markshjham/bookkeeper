@@ -29,10 +29,10 @@
       <%= form.text_field :transaction_date, id: :item_transaction_date, value: item.transaction_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
     </div>
     
-    <div><%= form.text_field :description, id: :item_description %></div>
-    <div><%= form.check_box :debit, id: :item_debit %></div>
+    <div class="divClick"><%= form.text_field :description, id: :item_description %></div>
+    <div class="divClick"><%= form.check_box :debit, id: :item_debit %></div>
     <div><%= form.text_field :amount, id: :item_amount %></div>
-    <div>
+    <div class="divClick">
       <%= form.text_field :category, id: :item_category, list: "category-list" %>
       <datalist id="category-list">
         <% @categories.each do |category| %>
@@ -40,7 +40,7 @@
         <% end %>
       </datalist>
     </div>
-    <div>
+    <div class="divClick">
       <%= form.text_field :subcategory, id: :item_subcategory, list: "subcategory-list" %>
       <datalist id="subcategory-list">
         <% @subcategories.each do |subcategory| %>
@@ -55,3 +55,13 @@
     <% end %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  var divClicks = document.getElementsByClassName("divClick");
+  
+  for (var i = 0; i < divClicks.length; i++) {
+    divClicks[i].onclick = function () { event.target.children[0].focus(); };
+  }
+  
+  
+</script>
