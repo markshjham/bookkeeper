@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
       else
         @items = Item.where(transaction_date: (params[:start_date]..params[:end_date])).order(transaction_date: :desc)
       end
-    elsif params[:date_range]
+    elsif params[:search_choice] == "date_range"
       if params[:filter_list] != ""
         @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]), category: params[:filter_list]).order(transaction_date: :desc)
       else

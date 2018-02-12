@@ -1,33 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="center">Bookkeeper</h1>
-
-<%= form_tag("/", method: "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= select_tag :search_choice, options_for_select([ ["date range", "date_range"], ["last week", "last_week"], ["view month", "view_month"] ], "date range"), onchange: "myFunction()", include_blank: true %>
-  <% if params[:start_date] %>
-    <% start_date = params[:start_date] %>
-    <% end_date = params[:end_date] %>
-  <% else %>
-    <% start_date = Date.today %>
-    <% end_date = Date.today %>
-  <% end %>
-  <div id="select_range">
-    <%= text_field_tag :start_date, nil, id: :start_date, value: start_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
-    to
-    <%= text_field_tag :end_date, nil, id: :end_date, value: end_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
-  </div>
-  <div id="select_week" class="hidden-item">
-    <%= check_box_tag :last_week, id: :last_week %>
-  </div>
-  <div id="select_month">
-    <%= check_box_tag :check_month, id: :check_month %>
-    <%= select_tag :month_list, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 1), class: "hidden-item" %>
-  </div>
-  <%= select_tag :filter_list, options_from_collection_for_select(@categories, "category", "category"), include_blank: true %>
-  <%= submit_tag("Search") %>
-<% end %>
-
 <div class="transaction-grid grid-container">
   <div class="label">Transaction date</div>
   <div class="label">Description</div>
@@ -71,50 +43,3 @@
 <br>
 
 
-<script type="text/javascript">
-
-  document.getElementsByClassName("divClick").addEventListener("click", divClicked(event));
-  
-  function divClicked(event) {
-    event.target.children.focus();
-  };
-
-
-  function myFunction() {
-    
-    var x = document.getElementById("search_choice");
-    var range = document.getElementById("select_range");
-    var week = document.getElementById("select_week");
-    var last = document.getElementById("last_week");
-    var month = document.getElementById("month_list");
-    var month_check = document.getElementById("check_month");
-    
-    if (x.value === "") {
-      range.style.display = "none";
-      month.style.display = "none";
-      last.checked = false;
-      month_check.checked = false;
-    } 
-    
-    if (x.value === "date_range") {
-      range.style.display = "block";
-      month.style.display = "none";
-      last.checked = false;
-      month_check.checked = false;
-    }
-    
-    if (x.value === "last_week") {
-      range.style.display = "none";
-      month.style.display = "none";
-      last.checked = true;
-      month_check.checked = false;
-    }
-    
-    if (x.value === "view_month") {
-      range.style.display = "none";
-      month.style.display = "block";
-      last.checked = false;
-      month_check.checked = true;
-    }
-};
-</script>

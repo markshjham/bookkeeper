@@ -1,0 +1,27 @@
+<h1 class="center">Bookkeeper</h1>
+
+<%= form_tag("/items", method: "get") do %>
+  <div class="grid-container search-grid">
+    <%= select_tag :search_choice, options_for_select([ ["Search by", ""], ["date range", "date_range"], ["last week", "last_week"], ["view month", "view_month"] ], "Search by") %>
+    <% if params[:start_date] %>
+      <% start_date = params[:start_date] %>
+      <% end_date = params[:end_date] %>
+    <% else %>
+      <% start_date = Date.today %>
+      <% end_date = Date.today %>
+    <% end %>
+    <%= select_tag :filter_list, options_from_collection_for_select(@categories, "category", "category"), include_blank: "Filter by" %>
+    <div id="select_range" class="row">
+      <%= text_field_tag :start_date, nil, id: :start_date, value: start_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
+      to
+      <%= text_field_tag :end_date, nil, id: :end_date, value: end_date, class:"flatpickr flatpickr-input", readonly:"readonly" %>
+    </div>
+    <div id="select_week" class="hidden-item">
+      <%= check_box_tag :last_week, id: :last_week %>
+    </div>
+    <%= check_box_tag :check_month, id: :check_month %>
+    <%= select_tag :month_list, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 1), class: "hidden-item row" %>
+    <%= submit_tag "Search", class:"row-button" %>
+  </div>
+<% end %>
+

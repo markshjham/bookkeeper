@@ -23,6 +23,11 @@
     }
 }
 
+.search-grid {
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+
 .transaction-grid {
     grid-template-columns: repeat(7, 1fr);
     margin-top: 40px;
@@ -52,10 +57,15 @@
     margin-top: 30px;
 }
 
+.row {
+    grid-column: 1 / -1;
+}
+
 .row-button {
-    grid-column: 1 / span 7;
+    grid-column: 1 / -1;
     background-color: #6CCF70 !important;
     color: white !important;
+    width: 100%;
     
     &:hover {
         background-color: #3C9F40 !important;
