@@ -48,7 +48,8 @@
         <% end %>
       </datalist>
     </div>
-    <div><div class="actions"><%= form.submit %></div></div>
+    <div></div>
+    <%= form.submit class: "row-button actions" %>
     <%= link_to 'Back', items_path, class: "row-button" %>
     <% if @edit=='true' %>
       <%= link_to 'Delete', @item, method: :delete, data: { confirm: 'Are you sure?' } %>

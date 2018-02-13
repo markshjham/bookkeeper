@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+$mainGreen: #5CBF60;
+$lightGreen: #6CCF70;
+$darkGreen: #3C9F40;
+
 .grid-container {
     display: grid;
     font-size: 16px;
@@ -17,7 +22,7 @@
         border: 1px solid #ddd;
         padding-top: 12px;
         padding-bottom: 12px;
-        background-color: #5CBF60;
+        background-color: $mainGreen;
         color: white;
         text-align: center;
     }
@@ -25,7 +30,20 @@
 
 .search-grid {
     grid-template-columns: repeat(2, 1fr);
-    
+    margin: auto;
+}
+
+#search-bar {
+    z-index: 1;
+    width: 95%;
+    margin: auto;
+    position: absolute;
+    top: 66px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
 }
 
 .transaction-grid {
@@ -63,12 +81,22 @@
 
 .row-button {
     grid-column: 1 / -1;
-    background-color: #6CCF70 !important;
+    background-color: $lightGreen !important;
     color: white !important;
     width: 100%;
     
     &:hover {
-        background-color: #3C9F40 !important;
+        background-color: $darkGreen !important;
+    }
+}
+
+.button {
+    background-color: $lightGreen !important;
+    color: white !important;
+    width: 100%;
+    
+    &:hover {
+        background-color: $darkGreen !important;
     }
 }
 
@@ -90,6 +118,45 @@ form input {
     text-align: center;
     font-size: 16px;
     margin: auto;
+}
+
+.navbar {
+    background-color: $mainGreen;
+    margin: auto;
+    width: 100%;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#logo {
+    color: white;
+    margin: 20px;
+    font-size: 30px;
+    float: left;
     
+    &:hover {
+        background: $mainGreen;
+    }
+}
+
+.material-icons {
+    color: white;
+    margin: 20px;
+    background: $mainGreen;
+    border: none;
+    cursor: pointer;
     
+    &:hover {
+        background: $mainGreen;
+    }    
+}
+
+.show {
+    display: block !important;
+}
+
+.right {
+    float: right;
 }

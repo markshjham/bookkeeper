@@ -2,11 +2,23 @@ document.addEventListener("turbolinks:load", function() {
   var divClicks = document.getElementsByClassName("divClick");
   
   for (var i = 0; i < divClicks.length; i++) {
-    divClicks[i].onclick = function () { event.target.children[0].focus(); };
+    divClicks[i].onclick = function() { event.target.children[0].focus(); };
   }
   
   var searchChoice = document.getElementById("search_choice");
   searchChoice.onchange = searchFunction;
+  
+  var searchDrop = document.getElementById("search-drop");
+  searchDrop.onclick = function() {
+    var searchBar = document.getElementById("search-bar");
+    if (searchBar.style.maxHeight) {
+      searchBar.style.maxHeight = null;
+    }
+    else {
+      searchBar.style.maxHeight = searchBar.scrollHeight + "px";
+    }
+  };
+  
 });
 
 function searchFunction() {
