@@ -19,35 +19,39 @@ document.addEventListener("turbolinks:load", function() {
 function searchFunction() {
   
   var x = document.getElementById("search_choice");
-  var range = document.getElementById("select_range");
+  var range = document.getElementsByClassName("select_range");
   var week = document.getElementById("select_week");
   var last = document.getElementById("last_week");
   var month = document.getElementById("month_list");
   var month_check = document.getElementById("check_month");
   
   if (x.value === "") {
-    range.style.display = "none";
+    range[0].style.display = "none";
+    range[1].style.display = "none";
     month.style.display = "none";
     last.checked = false;
     month_check.checked = false;
   } 
   
   if (x.value === "date_range") {
-    range.style.display = "block";
+    range[0].style.display = "block";
+    range[1].style.display = "block";
     month.style.display = "none";
     last.checked = false;
     month_check.checked = false;
   }
   
   if (x.value === "last_week") {
-    range.style.display = "none";
+    range[0].style.display = "none";
+    range[1].style.display = "none";
     month.style.display = "none";
     last.checked = true;
     month_check.checked = false;
   }
   
   if (x.value === "view_month") {
-    range.style.display = "none";
+    range[0].style.display = "none";
+    range[1].style.display = "none";
     month.style.display = "block";
     last.checked = false;
     month_check.checked = true;

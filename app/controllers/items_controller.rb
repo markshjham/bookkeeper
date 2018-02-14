@@ -13,14 +13,10 @@ class ItemsController < ApplicationController
         @items = Item.where(transaction_date: (params[:start_date]..params[:end_date]))
       end
     elsif params[:search_choice] == "view_month"
-      date = Date.today
+      date = Date.parse(params[:month_list])
       
       while date.day != 1
         date = date.prev_day
-      end
-      
-      while date.month != params[:month_list].to_i
-        date = date.prev_month
       end
       
       params[:start_date] = date
@@ -51,6 +47,7 @@ class ItemsController < ApplicationController
     @debitTotal = @items.where(debit:true).sum(:amount)
     @creditTotal = @items.where(debit:false).sum(:amount)
     @categories = Item.select(:category).distinct
+    @months = pastMonths
   end
 
   # GET /items/1
@@ -138,5 +135,20 @@ class ItemsController < ApplicationController
         day = 0
       end
       return today - day - 1
+    end
+
+    def pastMonths
+      date = Date.today.prev_month
+      months = {}
+      until months.length == 12
+        if date.month < 10
+          month = "0" + date.month.to_s
+        else
+          month = date.month
+        end
+        months[date.year.to_s + "-" + month.to_s] = date
+        date = date.prev_month
+      end
+      return months
     end
 end

@@ -36,6 +36,7 @@ $darkGreen: #3C9F40;
 #search-bar {
     z-index: 1;
     width: 95%;
+    max-width: 800px;
     margin: auto;
     position: absolute;
     top: 66px;
@@ -116,8 +117,10 @@ $darkGreen: #3C9F40;
     display: none;
 }
 
-#select_range {
+.select_range {
     display: none;
+    background-color: white;
+    width: 100%;
 }
 
 form input {
