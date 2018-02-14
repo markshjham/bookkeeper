@@ -11,12 +11,7 @@ document.addEventListener("turbolinks:load", function() {
   var searchDrop = document.getElementById("search-drop");
   searchDrop.onclick = function() {
     var searchBar = document.getElementById("search-bar");
-    if (searchBar.style.maxHeight) {
-      searchBar.style.maxHeight = null;
-    }
-    else {
-      searchBar.style.maxHeight = searchBar.scrollHeight + "px";
-    }
+    searchBar.classList.toggle("search-bar-active");
   };
   
 });

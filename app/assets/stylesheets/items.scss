@@ -39,11 +39,19 @@ $darkGreen: #3C9F40;
     margin: auto;
     position: absolute;
     top: 66px;
-    left: 50%;
-    transform: translateX(-50%);
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.2s ease-out;
+    left: 0;
+    right: 0;
+    transform: translateY(-8em);
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    visibility: hidden;
+}
+
+.search-bar-active {
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    transform: translateY(0%) !important;
+    transition-delay: 0s, 0s, 0.3s !important;
 }
 
 .transaction-grid {
@@ -128,6 +136,7 @@ form input {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 2;
 }
 
 #logo {
@@ -151,10 +160,6 @@ form input {
     &:hover {
         background: $mainGreen;
     }    
-}
-
-.show {
-    display: block !important;
 }
 
 .right {
