@@ -25,7 +25,6 @@
     <div><%= item.subcategory %></div>
     <%= link_to 'Edit', edit_item_path(item), class: "grid-edit-button" %>
   <% end %>
-  <%= link_to 'Add New Transaction', new_item_path, class: "row-button" %>
   <% if params[:start_date] %>
     <%= link_to 'Return', items_path, class: "row-button" %>
   <% end %>

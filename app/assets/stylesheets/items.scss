@@ -168,3 +168,22 @@ form input {
 .right {
     float: right;
 }
+
+.sticky {
+    position: sticky;
+}
+
+.sidebar {
+    position: fixed;
+    top: 20%;
+    right: 0;
+    background-color: $lightGreen !important;
+    color: white !important;
+    padding: 5px;
+    border: 1px solid #ddd;
+    font-size: 30px;
+    
+    &:hover {
+        background-color: $darkGreen !important;
+    }
+}

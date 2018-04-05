@@ -60,6 +60,7 @@ class ItemsController < ApplicationController
     @categories = Item.select(:category).distinct
     @subcategories = Item.select(:subcategory).distinct
     @item = Item.new
+    @months = pastMonths
   end
 
   # GET /items/1/edit
