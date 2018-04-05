@@ -22,7 +22,7 @@
         <%= check_box_tag :last_week, id: :last_week %>
       </div>
       <%= check_box_tag :check_month, id: :check_month %>
-      <%= select_tag :month_list, options_for_select(@months, @months[0]), class: "hidden-item row" %>
+      <%= select_tag :month_list, options_for_select($months, $months[0]), class: "hidden-item row" %>
       <%= submit_tag "Search", class:"row-button" %>
     </div>
   <% end %>

@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
     @debitTotal = @items.where(debit:true).sum(:amount)
     @creditTotal = @items.where(debit:false).sum(:amount)
     @categories = Item.select(:category).distinct
-    @months = pastMonths
+    $months = pastMonths()
   end
 
   # GET /items/1
@@ -60,7 +60,6 @@ class ItemsController < ApplicationController
     @categories = Item.select(:category).distinct
     @subcategories = Item.select(:subcategory).distinct
     @item = Item.new
-    @months = pastMonths
   end
 
   # GET /items/1/edit
